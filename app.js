@@ -1,3 +1,4 @@
+//Authored by chums
 var express = require('express');
 var path = require('path');
 var favicon = require('static-favicon');
