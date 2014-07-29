@@ -1,19 +1,24 @@
 var express = require('express');
 var router = express.Router();
 
+var fetch = require('../dataFetch');
+
+
 /* GET home page. */
 router.get('/', function(req, res) {
-  res.render('index', { title: 'Express' });
+    res.render('index', { title: 'Express' });
 });
 
-/* GET home page. */
+/* GET draft page. This will return rankings in standard projection*/
 router.get('/draft', function(req, res) {
-  res.render('index', { title: 'Draft' });
+	fetch.fetchPlayerData(function(data) {
+	    res.render('index', { title: data.QBObject });
+    })   
 });
 
-/* POST to draft page. */
-router.post('/draft/:dataObj?', function(req, res) {
-  res.send("This is the draft page with data = " + req.params.dataObj);
+/* POST to draft page. Render a draft page with custom projection*/
+router.post('/draft', function(req, res) {
+    res.send(dataFetch.playerObject);
 });
 
 module.exports = router;
