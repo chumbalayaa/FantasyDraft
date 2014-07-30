@@ -1,3 +1,8 @@
+//This file handles the fetching of data from fantasypros.com
+//The main point of this file is to populate the playerObject variable
+//which contains all the player information (as of now it's only QB, 
+//RB, WR, and TE).
+
 var request = require('request'),
     jsdom = require('jsdom');
 
@@ -5,7 +10,7 @@ function fetchPlayerData(done) {
     var playerObject = {};
 
     function gotData() {
-        if (playerObject.QBObject) {
+        if (playerObject.QBObject && playerObject.RBObject && playerObject.WRObject && playerObject.TEObject) {
             done(playerObject)
         }
     }
@@ -101,7 +106,7 @@ function fetchPlayerData(done) {
 	    gotData();
     }
 
-    function kReady(errors, window) {
+    /*function kReady(errors, window) {
 	    var $ = window.$;
 	    var table = $("tbody:gt(0)").hide();
 	    var KObject = [];
@@ -118,7 +123,7 @@ function fetchPlayerData(done) {
 	    });
 	    playerObject.KObject = KObject;
 	    gotData();
-    }
+    }*/
 
     jsdom.env({
 	    url: 'http://www.fantasypros.com/nfl/projections/qb.php',
@@ -144,11 +149,11 @@ function fetchPlayerData(done) {
         done: teReady 
     });
 
-    jsdom.env({
+    /*jsdom.env({
         url: 'http://www.fantasypros.com/nfl/projections/k.php',
         scripts: ["http://code.jquery.com/jquery.js"],
         done: kReady 
-    });
+    });*/
 }
 
 module.exports = {
