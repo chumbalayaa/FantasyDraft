@@ -20,21 +20,21 @@ function addProjections(req, playerObject, done) {
 
     //This function will add a customProjection attribute
     //to the input JSON (playerObject).
-	function addCustomProjections(req, playerObject) {
+	function addCustomProjections(req, playerObject, callback) {
         console.log("Custom Projection");
         doneProj = true;
-        addFPI(req, playerObject);
+        callback(req, playerObject, finish);        
 	}
 
     //This function will add fpi attribute to the input
     //JSON (playerObject).
-	function addFPI(req, playerObject) {
+	function addFPI(req, playerObject, callback) {
         console.log("Adding FPI");
         doneFPI = true;
-        finish(playerObject);
+        callback(playerObject);
 	}
 
-	addCustomProjections(req, playerObject);
+	addCustomProjections(req, playerObject, addFPI);
 }
 
 
