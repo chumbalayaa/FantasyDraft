@@ -3,3 +3,34 @@ extends layout
 block content
   h1= title
   p This Page Will Handle the #{title}
+  form(method = 'post')
+    label(for = 'numTeams') Number of Teams
+      input(id = 'numTeams', type = 'number')
+
+    label(for = 'numQuarterbacks') Number of Quarterbacks per Team
+      input(id = 'numQuarterbacks', type = 'number')
+
+    label(for = 'numRunningBacks') Number of Running Backs per Team
+      input(id = 'numRunningBacks', type = 'number')
+
+    label(for = 'numWideReceivers') Number of Wide Receivers per Team
+      input(id = 'numWideReceivers', type = 'number')
+
+    label(for = 'numTightEnds') Number of Tight Ends per Team
+      input(id = 'numTightEnds', type = 'number')
+
+    label(for = 'numFlex') Number of Flex Players per Team
+      input(id = 'numFlex', type = 'number')
+
+    label(for = 'numKickers') Number of Kickers per Team
+      input(id = 'numKickers', type = 'number')
+
+    label(for = 'numDefense') Number of Defenses per Team
+      input(id = 'numDefense', type = 'number')
+   
+    label(for = 'numBench') Number of Bench Players per Team
+      input(id = 'numBench', type = 'number')
+    
+    br
+    br
+    
