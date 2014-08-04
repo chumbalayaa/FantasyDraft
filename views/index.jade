@@ -3,7 +3,7 @@ extends layout
 block content
   h1= title
   p This Page Will Handle the #{title}
-  form(method = 'post')
+  form(id = 'fantasyInfo', action = '', method = 'post')
     label(for = 'numTeams') Number of Teams
       input(id = 'numTeams', type = 'number')
 
@@ -33,4 +33,38 @@ block content
     
     br
     br
+
+    label(for = 'pointsPerPassingTD') Points per Passing TD
+      input(id = 'pointsPerPassingTD', type = 'number')
+
+    label(for = 'pointsPerInterceptionThrown') Points per Interception Thrown
+      input(id = 'pointsPerInterceptionThrown', type = 'number')
+
+    label(for = 'pointsPerSack') Points per Sack Sustained
+      input(id = 'pointsPerSack', type = 'number')
+      
+    label(for = 'pointsPerPassingYard') Points Per Passing Yard
+      input(id = 'pointsPerPassingYard', type = number)
     
+    label(for = 'pointsPerRushingTD') Points Per Rushing TD
+      input(id = 'pointsPerRushingTD', type = 'number')
+
+    label(for = 'pointsPerRushingYard') Points per Rushing TD
+      input(id = 'numBench', type = 'number')
+
+    label(for = 'pointsPerReceivingTD') Points per Receiving TD
+      input(id = 'pointsPerReceivingTD', type = 'number')
+
+    label(for = 'pointsPerReception') Points per Reception
+      input(id = 'pointsPerReception', type = 'number')
+    
+    label(for = 'pointsPerReceivingYard') Points per Receiving Yard
+      input(id = 'pointsPerReceivingYard', type = 'number')
+
+    label(for = 'pointsPer2pt') Points per Two Point Conversion
+      input(id = 'pointsPer2pt', type = 'number')
+
+    label(for = 'pointsPerFumble') Points per Fumble
+      input(id = 'pointsPerFumble', type = 'number')
+
+    input(id = 'submit', type = 'submit', value = 'Submit')
