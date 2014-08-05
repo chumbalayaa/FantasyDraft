@@ -3,7 +3,7 @@ extends layout
 block content
   h1= title
   p This Page Will Handle the #{title}
-  form(id = 'fantasyInfo', action = '', method = 'post')
+  form(id = 'fantasyInfo', action = '/draft', method = 'post')
     label(for = 'numTeams') Number of Teams
       input(id = 'numTeams', type = 'number')
 
