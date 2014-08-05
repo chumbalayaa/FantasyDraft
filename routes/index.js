@@ -4,7 +4,6 @@ var router = express.Router();
 var fetch = require('../dataFetch');
 var rank = require('../projectionRanking');
 
-
 /* GET home page. */
 router.get('/', function(req, res) {
     res.render('index', { title: 'Express' });
@@ -24,5 +23,6 @@ router.get('/draft', function(req, res) {
 router.post('/draft', function(req, res) {
     res.send(dataFetch.playerObject);
 });
+
 
 module.exports = router;
