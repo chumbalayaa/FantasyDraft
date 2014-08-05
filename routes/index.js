@@ -21,8 +21,8 @@ router.get('/draft', function(req, res) {
 
 /* POST to draft page. Render a draft page with custom projection*/
 router.post('/draft', function(req, res) {
-	console.log(req)
-    res.send(dataFetch.playerObject);
+    console.log(req.body);
+    res.send("Worked");
 });
 
 
