@@ -4,6 +4,8 @@ var router = express.Router();
 var fetch = require('../dataFetch');
 var rank = require('../projectionRanking');
 
+
+
 /* GET home page. */
 router.get('/', function(req, res) {
     res.render('index', { title: 'Express' });
