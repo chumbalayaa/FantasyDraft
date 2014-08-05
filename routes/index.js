@@ -23,7 +23,7 @@ router.get('/draft', function(req, res) {
 /* POST to draft page. Render a draft page with custom projection*/
 router.post('/draft', function(req, res) {
 	console.log(req)
-    res.send(dataFetch.playerObject);
+    res.send('This should do something');
 });
 
 module.exports = router;
