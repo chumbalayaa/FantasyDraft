@@ -15,7 +15,7 @@ router.get('/', function(req, res) {
 router.get('/draft', function(req, res) {
 	fetch.fetchPlayerData(function(data) {
 		rank.addProjections(req, data, function(finalData) {
-			console.log(finalData);
+			//console.log(finalData);
 			res.render('index', { title: "Done" });
 		})  
     })   
@@ -23,8 +23,12 @@ router.get('/draft', function(req, res) {
 
 /* POST to draft page. Render a draft page with custom projection*/
 router.post('/draft', function(req, res) {
-	console.log(req.body);
-    res.send('This should do something');
+	fetch.fetchPlayerData(function(data) {
+		rank.addProjections(req.body, data, function(finalData) {
+			//console.log(finalData);
+			res.render('index', { title: "Done" });
+		})  
+    })  
 });
 
 
