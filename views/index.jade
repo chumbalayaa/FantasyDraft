@@ -34,39 +34,39 @@ block content
     br
     div
       label(for = 'pointsPerPassingTD') Points per Passing TD
-        input(id = 'pointsPerPassingTD', name = 'pointsPerPassingTD', type = 'number', step = '0.1')
+        input(id = 'pointsPerPassingTD', name = 'pointsPerPassingTD', type = 'number', step = '0.1', min = '0')
 
-      label(for = 'pointsPerInterceptionThrown') Points per Interception Thrown
-        input(id = 'pointsPerInterceptionThrown', name = 'pointsPerInterceptionThrown', type = 'number', step = '0.1')
+      label(for = 'pointsLostPerInterceptionThrown') Points Lost per Interception Thrown
+        input(id = 'pointsLostPerInterceptionThrown', name = 'pointsLostPerInterceptionThrown', type = 'number', step = '0.1', min = '0')
 
-      label(for = 'pointsPerSack') Points per Sack Sustained
-        input(id = 'pointsPerSack', name = 'pointsPerSack', type = 'number', step = '0.1')
+      label(for = 'pointsLostPerSack') Points Lost per Sack Sustained
+        input(id = 'pointsLostPerSack', name = 'pointsLostPerSack', type = 'number', step = '0.1', min = '0')
       
       label(for = 'pointsPerPassingYard') Points Per Passing Yard
-        input(id = 'pointsPerPassingYard', name = 'pointsPerPassingYard', type = 'number', step = '0.1')
+        input(id = 'pointsPerPassingYard', name = 'pointsPerPassingYard', type = 'number', step = '0.1', min = '0')
     br
     div
       label(for = 'pointsPerRushingTD') Points Per Rushing TD
-        input(id = 'pointsPerRushingTD', name = 'pointsPerRushingTD', type = 'number', step = '0.1')
+        input(id = 'pointsPerRushingTD', name = 'pointsPerRushingTD', type = 'number', step = '0.1', min = '0')
 
       label(for = 'pointsPerRushingYard') Points per Rushing TD
-        input(id = 'pointsPerRushingYard', name = 'pointsPerRushingYard', type = 'number', step = '0.1')
+        input(id = 'pointsPerRushingYard', name = 'pointsPerRushingYard', type = 'number', step = '0.1', min = '0')
     br
     div
       label(for = 'pointsPerReceivingTD') Points per Receiving TD
-        input(id = 'pointsPerReceivingTD', name = 'pointsPerReceivingTD', type = 'number', step = '0.1')
+        input(id = 'pointsPerReceivingTD', name = 'pointsPerReceivingTD', type = 'number', step = '0.1', min = '0')
 
       label(for = 'pointsPerReception') Points per Reception
-        input(id = 'pointsPerReception', name = 'pointsPerReception', type = 'number', step = '0.1')
+        input(id = 'pointsPerReception', name = 'pointsPerReception', type = 'number', step = '0.1', min = '0')
     
       label(for = 'pointsPerReceivingYard') Points per Receiving Yard
-        input(id = 'pointsPerReceivingYard', name = 'pointsPerReceivingYard', type = 'number', step = '0.1')
+        input(id = 'pointsPerReceivingYard', name = 'pointsPerReceivingYard', type = 'number', step = '0.1', min = '0')
     br
     div
       label(for = 'pointsPer2pt') Points per Two Point Conversion
-        input(id = 'pointsPer2pt', name = 'pointsPer2pt', type = 'number', step = '0.1')
+        input(id = 'pointsPer2pt', name = 'pointsPer2pt', type = 'number', step = '0.1', min = '0')
 
-      label(for = 'pointsPerFumble') Points per Fumble
-        input(id = 'pointsPerFumble', name = 'pointsPerFumble', type = 'number', step = '0.1')
+      label(for = 'pointsLostPerFumble') Points Lost per Fumble
+        input(id = 'pointsLostPerFumble', name = 'pointsLostPerFumble', type = 'number', step = '0.1', min = '0')
     br
     input(id = 'submit', type = 'submit', value = 'Submit')
