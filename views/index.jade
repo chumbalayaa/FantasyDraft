@@ -4,67 +4,69 @@ block content
   h1= title
   p This Page Will Handle the #{title}
   form(id = 'fantasyInfo', name = 'fantasyInfo', action = '/draft', method = 'post')
-    label(for = 'numTeams') Number of Teams
-      input(id = 'numTeams', name = 'numTeams', type = 'number')
+    div
+      label(for = 'numTeams') Number of Teams
+        input(id = 'numTeams', name = 'numTeams', type = 'number', min = '0')
 
-    label(for = 'numQuarterbacks') Number of Quarterbacks per Team
-      input(id = 'numQuarterbacks', name = 'numQuarterbacks', type = 'number')
+      label(for = 'numQuarterbacks') Number of Quarterbacks per Team
+        input(id = 'numQuarterbacks', name = 'numQuarterbacks', type = 'number', min = '0')
 
-    label(for = 'numRunningBacks') Number of Running Backs per Team
-      input(id = 'numRunningBacks', name = 'numRunningBacks', type = 'number')
+      label(for = 'numRunningBacks') Number of Running Backs per Team
+        input(id = 'numRunningBacks', name = 'numRunningBacks', type = 'number', min = '0')
 
-    label(for = 'numWideReceivers') Number of Wide Receivers per Team
-      input(id = 'numWideReceivers', name = 'numWideReceivers', type = 'number')
+      label(for = 'numWideReceivers') Number of Wide Receivers per Team
+        input(id = 'numWideReceivers', name = 'numWideReceivers', type = 'number', min = '0')
 
-    label(for = 'numTightEnds') Number of Tight Ends per Team
-      input(id = 'numTightEnds', name = 'numTightEnds', type = 'number')
+      label(for = 'numTightEnds') Number of Tight Ends per Team
+        input(id = 'numTightEnds', name = 'numTightEnds', type = 'number', min = '0')
 
-    label(for = 'numFlex') Number of Flex Players per Team
-      input(id = 'numFlex', name = 'numFlex', type = 'number')
+      label(for = 'numFlex') Number of Flex Players per Team
+        input(id = 'numFlex', name = 'numFlex', type = 'number', min = '0')
 
-    label(for = 'numKickers') Number of Kickers per Team
-      input(id = 'numKickers', name = 'numKickers', type = 'number')
+      label(for = 'numKickers') Number of Kickers per Team
+        input(id = 'numKickers', name = 'numKickers', type = 'number', min = '0')
 
-    label(for = 'numDefense') Number of Defenses per Team
-      input(id = 'numDefense', name = 'numDefense', type = 'number')
+      label(for = 'numDefense') Number of Defenses per Team
+        input(id = 'numDefense', name = 'numDefense', type = 'number', min = '0')
    
-    label(for = 'numBench') Number of Bench Players per Team
-      input(id = 'numBench', name = 'numBench', type = 'number')
-    
+      label(for = 'numBench') Number of Bench Players per Team
+        input(id = 'numBench', name = 'numBench', type = 'number', min = '0')
     br
-    br
+    div
+      label(for = 'pointsPerPassingTD') Points per Passing TD
+        input(id = 'pointsPerPassingTD', name = 'pointsPerPassingTD', type = 'number', step = '0.1')
 
-    label(for = 'pointsPerPassingTD') Points per Passing TD
-      input(id = 'pointsPerPassingTD', name = 'pointsPerPassingTD', type = 'number')
+      label(for = 'pointsPerInterceptionThrown') Points per Interception Thrown
+        input(id = 'pointsPerInterceptionThrown', name = 'pointsPerInterceptionThrown', type = 'number', step = '0.1')
 
-    label(for = 'pointsPerInterceptionThrown') Points per Interception Thrown
-      input(id = 'pointsPerInterceptionThrown', name = 'pointsPerInterceptionThrown', type = 'number')
-
-    label(for = 'pointsPerSack') Points per Sack Sustained
-      input(id = 'pointsPerSack', name = 'pointsPerSack', type = 'number')
+      label(for = 'pointsPerSack') Points per Sack Sustained
+        input(id = 'pointsPerSack', name = 'pointsPerSack', type = 'number', step = '0.1')
       
-    label(for = 'pointsPerPassingYard') Points Per Passing Yard
-      input(id = 'pointsPerPassingYard', name = 'pointsPerPassingYard', type = number)
+      label(for = 'pointsPerPassingYard') Points Per Passing Yard
+        input(id = 'pointsPerPassingYard', name = 'pointsPerPassingYard', type = 'number', step = '0.1')
+    br
+    div
+      label(for = 'pointsPerRushingTD') Points Per Rushing TD
+        input(id = 'pointsPerRushingTD', name = 'pointsPerRushingTD', type = 'number', step = '0.1')
+
+      label(for = 'pointsPerRushingYard') Points per Rushing TD
+        input(id = 'pointsPerRushingYard', name = 'pointsPerRushingYard', type = 'number', step = '0.1')
+    br
+    div
+      label(for = 'pointsPerReceivingTD') Points per Receiving TD
+        input(id = 'pointsPerReceivingTD', name = 'pointsPerReceivingTD', type = 'number', step = '0.1')
+
+      label(for = 'pointsPerReception') Points per Reception
+        input(id = 'pointsPerReception', name = 'pointsPerReception', type = 'number', step = '0.1')
     
-    label(for = 'pointsPerRushingTD') Points Per Rushing TD
-      input(id = 'pointsPerRushingTD', name = 'pointsPerRushingTD', type = 'number')
+      label(for = 'pointsPerReceivingYard') Points per Receiving Yard
+        input(id = 'pointsPerReceivingYard', name = 'pointsPerReceivingYard', type = 'number', step = '0.1')
+    br
+    div
+      label(for = 'pointsPer2pt') Points per Two Point Conversion
+        input(id = 'pointsPer2pt', name = 'pointsPer2pt', type = 'number', step = '0.1')
 
-    label(for = 'pointsPerRushingYard') Points per Rushing TD
-      input(id = 'pointsPerRushingYard', name = 'pointsPerRushingYard', type = 'number')
-
-    label(for = 'pointsPerReceivingTD') Points per Receiving TD
-      input(id = 'pointsPerReceivingTD', name = 'pointsPerReceivingTD', type = 'number')
-
-    label(for = 'pointsPerReception') Points per Reception
-      input(id = 'pointsPerReception', name = 'pointsPerReception', type = 'number')
-    
-    label(for = 'pointsPerReceivingYard') Points per Receiving Yard
-      input(id = 'pointsPerReceivingYard', name = 'pointsPerReceivingYard', type = 'number')
-
-    label(for = 'pointsPer2pt') Points per Two Point Conversion
-      input(id = 'pointsPer2pt', name = 'pointsPer2pt', type = 'number')
-
-    label(for = 'pointsPerFumble') Points per Fumble
-      input(id = 'pointsPerFumble', name = 'pointsPerFumble', type = 'number')
-
+      label(for = 'pointsPerFumble') Points per Fumble
+        input(id = 'pointsPerFumble', name = 'pointsPerFumble', type = 'number', step = '0.1')
+    br
     input(id = 'submit', type = 'submit', value = 'Submit')
