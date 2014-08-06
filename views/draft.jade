@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  h1= title
+    p This Page Will Handle the #{title}
+
+    table
+      tr
+        td(style='width: '+(100/2)+'%').
+          Twitter
+        td= 'Stuff1'
+      tr
+        td(style='width: '+(100/2)+'%').
+          Blog
+        td= 'Stuff2'
