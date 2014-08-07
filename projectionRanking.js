@@ -18,6 +18,13 @@ function addProjections(req, playerObject, done) {
 		}
 	}
 
+	function sortByKey(array, key) {
+        return array.sort(function(a, b) {
+            var x = a[key]; var y = b[key];
+            return ((x < y) ? 1 : ((x > y) ? -1 : 0));
+        });
+    }
+
 
     //This function will add a customProjection attribute
     //to the input JSON (playerObject).
@@ -65,11 +72,11 @@ function addProjections(req, playerObject, done) {
 		for (var i=0; i < playerObject.TEObject.length; i++) {
             var newTotal = 0,
             te = playerObject.TEObject[i];
-            
-            newTotal += parseFloat(req.pointsPerReception) * parseFloat(wr.receptions);
-            newTotal += parseFloat(req.pointsPerReceivingYard) * parseFloat(wr.receiving_yards);
-            newTotal += parseFloat(req.pointsPerReceivingTD) * parseFloat(wr.receiving_tds);
-            newTotal -= parseFloat(req.pointsPerFumble) * parseFloat(wr.fumbles_lost);
+
+            newTotal += parseFloat(req.pointsPerReception) * parseFloat(te.receptions);
+            newTotal += parseFloat(req.pointsPerReceivingYard) * parseFloat(te.receiving_yards);
+            newTotal += parseFloat(req.pointsPerReceivingTD) * parseFloat(te.receiving_tds);
+            newTotal -= parseFloat(req.pointsPerFumble) * parseFloat(te.fumbles_lost);
             te.custom_projection = newTotal;
 		}
         doneProj = true;
@@ -80,7 +87,44 @@ function addProjections(req, playerObject, done) {
     //This function will add fpi attribute to the input
     //JSON (playerObject).
 	function addFPI(req, playerObject, callback) {
-        console.log("Adding FPI");
+        //Number of Starters
+        numQBs = parseFloat(req.numQuarterbacks) * parseFloat(req.numTeams);
+        numRBs = parseFloat(req.numRunningBacks) * parseFloat(req.numTeams);
+        numWRs = parseFloat(req.numWideReceivers) * parseFloat(req.numTeams);
+        numTEs = parseFloat(req.numTightEnds) * parseFloat(req.numTeams);
+
+        //Quaterbacks
+        QB_FPI_BASE = sortByKey(playerObject.QBObject, 'custom_projection')[numQBs-1].custom_projection;
+        for (var i=0; i < playerObject.QBObject.length; i++) {
+            qb = playerObject.QBObject[i];
+            FPI = qb.custom_projection - QB_FPI_BASE;
+            qb.FPI = FPI;
+		}
+
+		//Runningbacks
+        RB_FPI_BASE = sortByKey(playerObject.RBObject, 'custom_projection')[numRBs-1].custom_projection;
+        for (var i=0; i < playerObject.RBObject.length; i++) {
+            rb = playerObject.RBObject[i];
+            FPI = rb.custom_projection - RB_FPI_BASE;
+            rb.FPI = FPI;
+		}
+
+		//Wide Receivers
+        WR_FPI_BASE = sortByKey(playerObject.WRObject, 'custom_projection')[numWRs-1].custom_projection;
+        for (var i=0; i < playerObject.WRObject.length; i++) {
+            wr = playerObject.WRObject[i];
+            FPI = wr.custom_projection - WR_FPI_BASE;
+            wr.FPI = FPI;
+		}
+
+		//Tight Ends
+        TE_FPI_BASE = sortByKey(playerObject.TEObject, 'custom_projection')[numTEs-1].custom_projection;
+        for (var i=0; i < playerObject.TEObject.length; i++) {
+            te = playerObject.TEObject[i];
+            FPI = te.custom_projection - TE_FPI_BASE;
+            te.FPI = FPI;
+		}        
+
         doneFPI = true;
         callback(playerObject);
 	}
@@ -92,3 +136,8 @@ function addProjections(req, playerObject, done) {
 module.exports = {
     addProjections: addProjections
 };
+
+
+
+
+
