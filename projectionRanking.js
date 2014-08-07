@@ -26,8 +26,7 @@ function addProjections(req, playerObject, done) {
     }
 
 
-    //This function will add a customProjection attribute
-    //to the input JSON (playerObject).
+    //This function will add a customProjection attribute to the input JSON (playerObject).
 	function addCustomProjections(req, playerObject, callback) {
 		//Quaterbacks TODO: grab sack information
 		for (var i=0; i < playerObject.QBObject.length; i++) {
@@ -84,8 +83,7 @@ function addProjections(req, playerObject, done) {
 	}
 
 
-    //This function will add fpi attribute to the input
-    //JSON (playerObject).
+    //This function will add fpi attribute to the input JSON (playerObject).
 	function addFPI(req, playerObject, callback) {
         //Number of Starters
         numQBs = parseFloat(req.numQuarterbacks) * parseFloat(req.numTeams);
