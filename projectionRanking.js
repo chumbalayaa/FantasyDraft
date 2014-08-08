@@ -6,7 +6,7 @@
 //which will be used to determine their final ranking. 
 //These new attributes will simply be added to the existing
 //JSON object that is inputted. 
-
+//Stupid change
 
 function addProjections(req, playerObject, done) {
 	doneProj = false;
