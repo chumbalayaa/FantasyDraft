@@ -19,9 +19,7 @@ router.get('/draft', function(req, res) {
 /* POST to draft page. Render a draft page with custom projection*/
 router.post('/draft', function(req, res) {
 	fetch.fetchPlayerData(function(data) {
-		console.log(req.body);
 		rank.addProjections(req.body, data, function(finalData) {
-			console.log(finalData);
 			res.render('draft', { title: "Draft", data: finalData });
 		})  
     })  

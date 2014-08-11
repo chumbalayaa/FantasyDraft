@@ -10,7 +10,7 @@ function fetchPlayerData(done) {
     var playerObject = {};
 
     function gotData() {
-        if (playerObject.QBObject && playerObject.RBObject && playerObject.WRObject && playerObject.TEObject) {
+        if (playerObject.QBObject && playerObject.RBObject && playerObject.WRObject && playerObject.TEObject && playerObject.KObject) {
             done(playerObject)
         }
     }
@@ -106,24 +106,34 @@ function fetchPlayerData(done) {
 	    gotData();
     }
 
-    /*function kReady(errors, window) {
+    function kReady(errors, window) {
 	    var $ = window.$;
-	    var table = $("tbody:gt(0)").hide();
+	    var table = $("div.games-fullcol");
 	    var KObject = [];
-	    table.find("tr").each(function (i, el) {
-	        var $tds = $(this).find('td');
+	    table.find("table.tableBody").each(function (i, el) {
+            //Get Name
+            var name = $(this).find('a.flexpop');
+            //Get Data
+	        var $tds = $(this).find('tr.tableBody').filter(function() {
+                return $(this).attr('bgcolor') == '#f8f8f2';
+            });
+            var kData = [];
+            $tds.children('td.playertableStat').each(function(i) {
+                kData.push($(this).text());
+            });
 	        KObject.push({
 	    	    'position': 'k',
-                'name': $tds.eq(0).text(),
-                'fg': $tds.eq(1).text(),
-                'fga': $tds.eq(2).text(),
-                'xpts': $tds.eq(3).text(),
-                'standard_projection': $tds.eq(4).text()
+                'name': name.text(),
+                'fg1-39': kData[0],
+                'fg40-49': kData[1],
+                'fg50+': kData[2],
+                'xpts':  kData[4],
+                'standard_projection': kData[5]
 		    });
 	    });
 	    playerObject.KObject = KObject;
 	    gotData();
-    }*/
+    }
 
     jsdom.env({
 	    url: 'http://www.fantasypros.com/nfl/projections/qb.php',
@@ -149,11 +159,11 @@ function fetchPlayerData(done) {
         done: teReady 
     });
 
-    /*jsdom.env({
-        url: 'http://www.fantasypros.com/nfl/projections/k.php',
+    jsdom.env({
+        url: 'http://games.espn.go.com/ffl/tools/projections?display=alt&slotCategoryId=17',
         scripts: ["http://code.jquery.com/jquery.js"],
         done: kReady 
-    });*/
+    });
 }
 
 module.exports = {
