@@ -10,7 +10,7 @@ function fetchPlayerData(done) {
     var playerObject = {};
 
     function gotData() {
-        if (playerObject.QBObject && playerObject.RBObject && playerObject.WRObject && playerObject.TEObject && playerObject.KObject) {
+        if (playerObject.QBObject && playerObject.RBObject && playerObject.WRObject && playerObject.TEObject && playerObject.KObject && playerObject.DObject) {
             done(playerObject)
         }
     }
@@ -135,6 +135,37 @@ function fetchPlayerData(done) {
 	    gotData();
     }
 
+    function dReady(errors, window) {
+        var $ = window.$;
+        var table = $("div.games-fullcol");
+        var DObject = [];
+        table.find("table.tableBody").each(function (i, el) {
+            //Get Name
+            var name = $(this).find('a.flexpop');
+            //Get Data
+            var $tds = $(this).find('tr.tableBody').filter(function() {
+                return $(this).attr('bgcolor') == '#f8f8f2';
+            });
+            var dData = [];
+            $tds.children('td.playertableStat').each(function(i) {
+                dData.push($(this).text());
+            });
+            DObject.push({
+                'position': 'd/st',
+                'name': name.text(),
+                'sacks': dData[0],
+                'ints': dData[1],
+                'fumble_recoveries': dData[2],
+                'tds':  dData[3],
+                'points_against':  dData[4],
+                'yards_against':  dData[5],
+                'standard_projection': dData[6]
+            });
+        });
+        playerObject.DObject = DObject;
+        gotData();
+    }
+
     jsdom.env({
 	    url: 'http://www.fantasypros.com/nfl/projections/qb.php',
 	    scripts: ["http://code.jquery.com/jquery.js"],
@@ -163,6 +194,12 @@ function fetchPlayerData(done) {
         url: 'http://games.espn.go.com/ffl/tools/projections?display=alt&slotCategoryId=17',
         scripts: ["http://code.jquery.com/jquery.js"],
         done: kReady 
+    });
+
+    jsdom.env({
+        url: 'http://games.espn.go.com/ffl/tools/projections?display=alt&slotCategoryId=16',
+        scripts: ["http://code.jquery.com/jquery.js"],
+        done: dReady 
     });
 }
 
