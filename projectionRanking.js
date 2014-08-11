@@ -34,11 +34,11 @@ function addProjections(req, playerObject, done) {
             qb = playerObject.QBObject[i];
  
             newTotal += parseFloat(req.pointsPerPassingTD) * parseFloat(qb.passing_tds);
-            newTotal -= parseFloat(req.pointsPerInterceptionThrown) * parseFloat(qb.interceptions);
+            newTotal -= parseFloat(req.pointsLostPerInterceptionThrown) * parseFloat(qb.interceptions);
             newTotal += parseFloat(req.pointsPerPassingYard) * parseFloat(qb.passing_yards);
             newTotal += parseFloat(req.pointsPerRushingTD) * parseFloat(qb.rushing_tds);
             newTotal += parseFloat(req.pointsPerRushingYard) * parseFloat(qb.rushing_yards);
-            newTotal -= parseFloat(req.pointsPerFumble) * parseFloat(qb.fumbles_lost);
+            newTotal -= parseFloat(req.pointsLostPerFumble) * parseFloat(qb.fumbles_lost);
             qb.custom_projection = newTotal;
 		}
 		//Runningbacks
@@ -51,7 +51,7 @@ function addProjections(req, playerObject, done) {
             newTotal += parseFloat(req.pointsPerReception) * parseFloat(rb.receptions);
             newTotal += parseFloat(req.pointsPerReceivingYard) * parseFloat(rb.receiving_yards);
             newTotal += parseFloat(req.pointsPerReceivingTD) * parseFloat(rb.receiving_tds);
-            newTotal -= parseFloat(req.pointsPerFumble) * parseFloat(rb.fumbles_lost);
+            newTotal -= parseFloat(req.pointsLostPerFumble) * parseFloat(rb.fumbles_lost);
             rb.custom_projection = newTotal;
 		}
 		//Receivers
@@ -64,7 +64,7 @@ function addProjections(req, playerObject, done) {
             newTotal += parseFloat(req.pointsPerReception) * parseFloat(wr.receptions);
             newTotal += parseFloat(req.pointsPerReceivingYard) * parseFloat(wr.receiving_yards);
             newTotal += parseFloat(req.pointsPerReceivingTD) * parseFloat(wr.receiving_tds);
-            newTotal -= parseFloat(req.pointsPerFumble) * parseFloat(wr.fumbles_lost);
+            newTotal -= parseFloat(req.pointsLostPerFumble) * parseFloat(wr.fumbles_lost);
             wr.custom_projection = newTotal;
 		}
 		//Tight Ends
@@ -75,7 +75,7 @@ function addProjections(req, playerObject, done) {
             newTotal += parseFloat(req.pointsPerReception) * parseFloat(te.receptions);
             newTotal += parseFloat(req.pointsPerReceivingYard) * parseFloat(te.receiving_yards);
             newTotal += parseFloat(req.pointsPerReceivingTD) * parseFloat(te.receiving_tds);
-            newTotal -= parseFloat(req.pointsPerFumble) * parseFloat(te.fumbles_lost);
+            newTotal -= parseFloat(req.pointsLostPerFumble) * parseFloat(te.fumbles_lost);
             te.custom_projection = newTotal;
 		}
         doneProj = true;
