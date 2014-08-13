@@ -124,9 +124,9 @@ function fetchPlayerData(done) {
 	        KObject.push({
 	    	    'position': 'k',
                 'name': name.text(),
-                'fg1-39': kData[0],
-                'fg40-49': kData[1],
-                'fg50+': kData[2],
+                'fg1_39': kData[0],
+                'fg40_49': kData[1],
+                'fg50': kData[2],
                 'xpts':  kData[4],
                 'standard_projection': kData[5]
 		    });
