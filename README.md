@@ -6,18 +6,18 @@ This will ensure a victorious fantasy football season for Chums and Karson
 
 ####v 1.0
 Version 1.0 has the following features
-1. Custom scoring and league setuo
-2. Aggregated data from fantasypros.com for QB, RB, WR, and TE
-3. Data from espn.com for K and D/ST
-4. Fantasy Position Index (FPI) ranking for each player given custom scoring
+* Custom scoring and league setuo
+* Aggregated data from fantasypros.com for QB, RB, WR, and TE
+* Data from espn.com for K and D/ST
+* Fantasy Position Index (FPI) ranking for each player given custom scoring
 
 
 ####v 2.0
 Version 2.0 is currently in beta and will have the following features
-1. Sack data for Quarterbacks (pending a trusted source)
-2. An enchanced UI
-3. Factoring in the flex position for the FPI algorithm
-4. A rich display for the results (draft) page
+* Sack data for Quarterbacks (pending a trusted source)
+* An enchanced UI
+* Factoring in the flex position for the FPI algorithm
+* A rich display for the results (draft) page
 
 
 
