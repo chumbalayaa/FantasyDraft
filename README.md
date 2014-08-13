@@ -6,7 +6,7 @@ This will ensure a victorious fantasy football season for Chums and Karson
 
 ####v 1.0
 Version 1.0 has the following features
-* Custom scoring and league setuo
+* Custom scoring and league setup
 * Aggregated data from fantasypros.com for QB, RB, WR, and TE
 * Data from espn.com for K and D/ST
 * Fantasy Position Index (FPI) ranking for each player given custom scoring
