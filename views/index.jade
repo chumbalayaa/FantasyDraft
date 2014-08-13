@@ -73,4 +73,65 @@ block content
       label(for = 'pointsLostPerFumble') Points Lost per Fumble
         input(id = 'pointsLostPerFumble', name = 'pointsLostPerFumble', type = 'number', step = '0.1', min = '0', value = '2' required)
     br
+
+    div
+      label(for = 'fieldGoal0-39') Points per Field Goal of 0-39 yards
+        input(id = 'fieldGoal0-39', name = 'fieldGoal0-39', type = 'number', step = '0.1', min = '0', value = '3' required)
+
+      label(for = 'fieldGoal40-49') Points per Field Goal of 40-49 yards
+        input(id = 'fieldGoal40-49', name = 'fieldGoal40-49', type = 'number', step = '0.1', min = '0', value = '4' required)
+
+      label(for = 'fieldGoal50+') Points per Field Goal of 50+ yards
+        input(id = 'fieldGoal50+', name = 'fieldGoal50+', type = 'number', step = '0.1', min = '0', value = '5' required)
+
+      label(for = 'pointsPerPAT') Points per PAT
+        input(id = 'pointsPerPAT', name = 'pointsPerPAT', type = 'number', step = '0.1', min = '0', value = '1' required)
+
+      label(for = 'pointsLostPerMissedFG') Points Lost per Missed Field Goal or PAT
+        input(id = 'pointsLostPerMissedFG', name = 'pointsLostPerMissedFG', type = 'number', step = '0.1', min = '0', value = '1' required)
+    br
+
+    div
+      label(for = 'pointsPerReturnTD') Points per Return TD
+        input(id = 'pointsPerReturnTD', name = 'pointsPerReturnTD', type = 'number', step = '0.1', min = '0', value = '6' required)
+
+      label(for = 'pointsPerInterception') Points per Interception
+        input(id = 'pointsPerInterception', name = 'pointsPerInterception', type = 'number', step = '0.1', min = '0', value = '2' required)
+
+      label(for = 'pointsPerFumbleRecovery') Points per Interception
+        input(id = 'pointsPerFumbleRecovery', name = 'pointsPerFumbleRecovery', type = 'number', step = '0.1', min = '0', value = '2' required)
+
+      label(for = 'pointsPerBlockedKick') Points per Blocked Kick
+        input(id = 'pointsPerBlockedKick', name = 'pointsPerBlockedKick', type = 'number', step = '0.1', min = '0', value = '2' required)
+
+      label(for = 'pointsPerSafety') Points per Safety
+        input(id = 'pointsPerSafety', name = 'pointsPerSafety', type = 'number', step = '0.1', min = '0', value = '2' required)
+
+      label(for = 'pointsPerSack') Points per Sack
+        input(id = 'pointsPerSack', name = 'pointsPerSack', type = 'number', step = '0.1', min = '0', value = '1' required)
+
+      label(for = '0PointsAllowed') Points for Allowing 0 Points
+        input(id = '0PointsAllowed', name = '0PointsAllowed', type = 'number', step = '0.1', min = '0', value = '5' required)
+
+      label(for = '1-6PointsAllowed') Points for Allowing 1-6Points
+        input(id = '1-6PointsAllowed', name = '1-6PointsAllowed', type = 'number', step = '0.1', min = '0', value = '4' required)
+
+      label(for = '7-13PointsAllowed') Points for Allowing 7-13 Points
+        input(id = '7-13PointsAllowed', name = '7-13PointsAllowed', type = 'number', step = '0.1', min = '0', value = '3' required)
+
+      label(for = '14-17PointsAllowed') Points for Allowing 14-17 Points
+        input(id = '14-17PointsAllowed', name = '14-17PointsAllowed', type = 'number', step = '0.1', min = '0', value = '1' required)
+
+      label(for = '18-27PointsAllowed') Points for Allowing 18-27 Points
+        input(id = '18-27PointsAllowed', name = '18-27PointsAllowed', type = 'number', step = '0.1', min = '0', value = '0' required)
+
+      label(for = '28-34PointsAllowed') Points Lost for Allowing 28-34 Points
+        input(id = '28-34PointsAllowed', name = '28-34PointsAllowed', type = 'number', step = '0.1', min = '0', value = '1' required)
+
+      label(for = '35-45PointsAllowed') Points Lost for Allowing 35-45 Points
+        input(id = '35-45PointsAllowed', name = '35-45PointsAllowed', type = 'number', step = '0.1', min = '0', value = '3' required)
+
+      label(for = '45+PointsAllowed') Points Lost for Allowing 45+ Points
+        input(id = '45+PointsAllowed', name = '45+PointsAllowed', type = 'number', step = '0.1', min = '0', value = '5' required)
+
     input(id = 'submit', type = 'submit', value = 'Submit')

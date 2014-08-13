@@ -1,15 +1,12 @@
 extends layout
-
+console.log(data)
 block content
-  h1= title
-    p This Page Will Handle the #{title}
+  table
+    tr
+      th Name
+      th Standard Projection
+      th Custom Projection
+      th FPI
+      th #{data}
 
-    table
-      tr
-        td(style='width: '+(100/2)+'%').
-          Twitter
-        td= 'Stuff1'
-      tr
-        td(style='width: '+(100/2)+'%').
-          Blog
-        td= 'Stuff2'
+
