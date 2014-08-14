@@ -3,6 +3,7 @@ extends layout
 block content
   h1= title
   p This Page Will Handle the #{title}
+  script(type='text/javascript')
   form(id = 'fantasyInfo', name = 'fantasyInfo', action = '/draft', method = 'post')
     div
       label(for = 'numTeams') Number of Teams

@@ -1,20 +1,67 @@
 extends layout
-console.log(data)
 block content
-  head
-    script.
-      var data = #{data}
-      alert("I am an alert");
-
-
-
   table
     tr
       th Name
+      th Position
       th Standard Projection
       th Custom Projection
       th FPI
-      th #{data}
+  script(type='text/javascript', src='http://code.jquery.com/jquery-2.1.0.min.js')
+  script(type='text/javascript').
+    $(document).ready(function() {
+
+      //This is what the data looks like   
+      var data = [ { position: 'wr',
+       name: 'Calvin Johnson (DET) ',
+       rushing_attempts: '0.0',
+       rushing_yards: '0.0',
+       rushing_tds: '0.0',
+       receptions: '93.8',
+       receiving_yards: '1578.6',
+       receiving_tds: '12.1',
+       fumbles_lost: '1.0',
+       standard_projection: '228.5',
+       custom_projection: 228.46,
+       FPI: 78.48999999999998 },
+     { position: 'wr',
+       name: 'Demaryius Thomas (DEN) ',
+       rushing_attempts: '0.0',
+       rushing_yards: '0.0',
+       rushing_tds: '0.0',
+       receptions: '94.8',
+       receiving_yards: '1441.6',
+       receiving_tds: '12.7',
+       fumbles_lost: '0.5',
+       standard_projection: '219.4',
+       custom_projection: 219.35999999999999,
+       FPI: 69.38999999999996 },
+     { position: 'wr',
+       name: 'Julio Jones (ATL) ',
+       rushing_attempts: '4.0',
+       rushing_yards: '35.5',
+       rushing_tds: '0.0',
+       receptions: '92.6',
+       receiving_yards: '1392.7',
+       receiving_tds: '10.1',
+       fumbles_lost: '0.5',
+       standard_projection: '202.4',
+       custom_projection: 202.42000000000002,
+       FPI: 52.44999999999999 }]
+
+
+      //Adds players to the table
+      for (var i = 0; i < data.length; i++) {
+        tr = $('<tr/>');
+        tr.append("<td>" + data[i].name + "</td>");
+        tr.append("<td>" + data[i].position + "</td>");
+        tr.append("<td>" + data[i].standard_projection + "</td>");
+        tr.append("<td>" + data[i].custom_projection + "</td>");
+        tr.append("<td>" + data[i].FPI + "</td>");
+        $('table').append(tr);
+      }
+    }); 
+
     
 
 
