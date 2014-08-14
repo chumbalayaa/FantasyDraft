@@ -14,6 +14,12 @@ function addProjections(req, playerObject, done) {
 
 	function finish(playerObject) {
 		if (doneProj && doneFPI) {
+            var testObj = playerObject.QBObject.concat(playerObject.RBObject);
+            testObj = testObj.concat(playerObject.WRObject);
+            testObj = testObj.concat(playerObject.TEObject);
+            testObj = testObj.concat(playerObject.KObject);
+            testObj = testObj.concat(playerObject.DObject);
+            console.log(sortByKey(testObj, 'FPI'));
 			done(playerObject);
 		}
 	}
@@ -78,6 +84,65 @@ function addProjections(req, playerObject, done) {
             newTotal -= parseFloat(req.pointsLostPerFumble) * parseFloat(te.fumbles_lost);
             te.custom_projection = newTotal;
 		}
+        //Kickers
+        for (var i=0; i < playerObject.KObject.length; i++) {
+            var newTotal = 0,
+            k = playerObject.KObject[i];
+
+            var fg1_39 = k.fg1_39.split("/");
+            var fg40_49 = k.fg40_49.split("/");
+            var fg50 = k.fg50.split("/");
+            var xpts = k.xpts.split("/");
+            var diff = parseFloat(xpts[1]) - parseFloat(xpts[0]);
+
+            newTotal += parseFloat(req.fieldGoalZeroToThirtyNine) * parseFloat(fg1_39[0]);
+            newTotal += parseFloat(req.fieldGoalFortyToFortyNine) * parseFloat(fg40_49[0]);
+            newTotal += parseFloat(req.fieldGoalFiftyPlus) * parseFloat(fg50[0]);
+            newTotal += parseFloat(req.pointsPerPAT) * parseFloat(k.xpts[0]);
+            newTotal -= parseFloat(req.pointsLostPerMissedFG) * diff;
+            k.custom_projection = newTotal;
+        }
+        //D/ST
+        for (var i=0; i < playerObject.DObject.length; i++) {
+            var newTotal = 0,
+            d = playerObject.DObject[i];
+
+            var pointsAgainstPerGame = parseFloat(d.points_against) / 16.0;
+
+            newTotal += parseFloat(req.pointsPerSack) * parseFloat(d.sacks);
+            newTotal += parseFloat(req.pointsPerInterception) * parseFloat(d.ints);
+            newTotal += parseFloat(req.pointsPerFumbleRecovery) * parseFloat(d.fumble_recoveries);
+            newTotal += parseFloat(req.pointsPerReturnTD) * parseFloat(d.tds);
+
+            switch (true) {
+                case (pointsAgainstPerGame == 0):
+                    newTotal += parseFloat(req.zeroPointsAllowed) * 16;
+                    break;
+                case (pointsAgainstPerGame <= 6):
+                    newTotal += parseFloat(req.oneToSixPointsAllowed) * 16;
+                    break;
+                case (pointsAgainstPerGame <= 13):
+                    newTotal += parseFloat(req.sevenToThirteenPointsAllowed) * 16;
+                    break;
+                case (pointsAgainstPerGame <= 17):
+                    newTotal += parseFloat(req.fourteenToSeventeenPointsAllowed) * 16;
+                    break;
+                case (pointsAgainstPerGame <= 27):
+                    newTotal += parseFloat(req.eighteenToTwentySevenPointsAllowed) * 16;
+                    break;
+                case (pointsAgainstPerGame <= 34):
+                    newTotal += parseFloat(req.twentyEightToThirtyFourPointsAllowed) * 16;
+                    break;
+                case (pointsAgainstPerGame <= 45):
+                    newTotal += parseFloat(req.thirtyFiveToFortyFivePointsAllowed) * 16;
+                    break;
+                default:
+                    newTotal += parseFloat(req.fortyFivePlusPlusPointsAllowed) * 16;
+                    break;
+            }
+
+            d.custom_projection = newTotal;
+        }
         doneProj = true;
         callback(req, playerObject, finish);        
 	}
@@ -90,6 +155,8 @@ function addProjections(req, playerObject, done) {
         numRBs = parseFloat(req.numRunningBacks) * parseFloat(req.numTeams);
         numWRs = parseFloat(req.numWideReceivers) * parseFloat(req.numTeams);
         numTEs = parseFloat(req.numTightEnds) * parseFloat(req.numTeams);
+        numKs = parseFloat(req.numKickers) * parseFloat(req.numTeams);
+        numDs = parseFloat(req.numDefense) * parseFloat(req.numTeams);
 
         //Quaterbacks
         QB_FPI_BASE = sortByKey(playerObject.QBObject, 'custom_projection')[numQBs-1].custom_projection;
@@ -121,7 +188,23 @@ function addProjections(req, playerObject, done) {
             te = playerObject.TEObject[i];
             FPI = te.custom_projection - TE_FPI_BASE;
             te.FPI = FPI;
-		}        
+		} 
+
+        //Kickers
+        K_FPI_BASE = sortByKey(playerObject.KObject, 'custom_projection')[numKs-1].custom_projection;
+        for (var i=0; i < playerObject.KObject.length; i++) {
+            k = playerObject.KObject[i];
+            FPI = k.custom_projection - K_FPI_BASE;
+            k.FPI = FPI;
+        } 
+
+        //D/ST
+        D_FPI_BASE = sortByKey(playerObject.DObject, 'custom_projection')[numDs-1].custom_projection;
+        for (var i=0; i < playerObject.DObject.length; i++) {
+            d = playerObject.DObject[i];
+            FPI = d.custom_projection - D_FPI_BASE;
+            d.FPI = FPI;
+        }        
 
         doneFPI = true;
         callback(playerObject);

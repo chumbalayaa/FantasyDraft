@@ -20,6 +20,7 @@ router.get('/draft', function(req, res) {
 router.post('/draft', function(req, res) {
 	fetch.fetchPlayerData(function(data) {
 		rank.addProjections(req.body, data, function(finalData) {
+			//console.log(finalData);
 			res.render('draft', { title: "Draft", data: finalData });
 			console.log(data);
 		})  
