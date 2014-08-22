@@ -32,5 +32,7 @@ is this player compared to the rest of the players at their position? Can I
 wait to draft them, or is their value so high that I should draft them soon?".
 For example, Tight Ends are not usually Fantasy goliaths, but Jimmy Graham
 is just so much better than every other tight end, that he will usually make
-the top 10 no matter what. 
+the top 10 no matter what. FPI does not factor in outside statistics and is
+solely a measure of both the individual potential of a player and that entire
+potential of that position in Fantasy Football.
 
