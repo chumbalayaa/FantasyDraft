@@ -1,7 +1,7 @@
 FantasyDraft
 ============
 
-This will ensure a victorious fantasy football season for Chums and Karson
+This will ensure a victorious fantasy football season for Chums
 
 
 ####v 1.0
